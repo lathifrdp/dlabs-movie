@@ -33,6 +33,12 @@ class _ListMoviePageState extends State<ListMoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/create-movie");
+          },
+          backgroundColor: hijauTua,
+          child: const Icon(Icons.add)),
       body: Stack(
         children: [
           Container(
