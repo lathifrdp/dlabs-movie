@@ -34,11 +34,4 @@ class MovieViewModel {
     data['page'] = page;
     return data;
   }
-
-  Map<String, dynamic> toJsonCreate() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['title'] = size;
-    data['description'] = page;
-    return data;
-  }
 }

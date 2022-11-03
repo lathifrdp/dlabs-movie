@@ -40,10 +40,9 @@ class MovieApi {
   Future<PostResponse> createMovie(MovieViewModel viewModel) async {
     try {
       if (viewModel.poster == null) {
-        response = await dio.post(
-          "${baseUrl}movie",
-          data: viewModel.toJsonCreate(),
-        );
+        FormData formData = FormData.fromMap(
+            {"title": viewModel.title, "description": viewModel.description});
+        response = await dio.post("${baseUrl}movie", data: formData);
         var responseData = response.data;
         PostResponse result = PostResponse.fromJson(responseData);
         return result;
