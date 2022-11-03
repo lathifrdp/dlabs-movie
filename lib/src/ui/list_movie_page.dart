@@ -128,52 +128,57 @@ class _ListMoviePageState extends State<ListMoviePage> {
   }
 
   Widget content(Movie e) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-          color: whiteColor, borderRadius: BorderRadius.circular(12)),
-      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              e.poster == null
-                  ? "https://placehold.jp/408080/ffffff/150x150.png?text=Movie"
-                  : "${e.poster}",
-              fit: BoxFit.cover,
-              width: 80,
-              height: 100,
-            )),
-        const SizedBox(
-          width: 16,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${e.title}",
-                style:
-                    TextStyle(color: grayColor80, fontWeight: FontWeight.w700),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                "${e.description}",
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: grayColor80, fontSize: 12),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(formatDateNullable(e.createdDate),
-                  style: TextStyle(color: successColor60, fontSize: 12))
-            ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/detail-movie', arguments: e);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(bottom: 8),
+        decoration: BoxDecoration(
+            color: whiteColor, borderRadius: BorderRadius.circular(12)),
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                e.poster == null
+                    ? "https://placehold.jp/408080/ffffff/150x150.png?text=Movie"
+                    : "${e.poster}",
+                fit: BoxFit.cover,
+                width: 80,
+                height: 100,
+              )),
+          const SizedBox(
+            width: 16,
           ),
-        ),
-      ]),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${e.title}",
+                  style: TextStyle(
+                      color: grayColor80, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  "${e.description}",
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: grayColor80, fontSize: 12),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(formatDateNullable(e.createdDate),
+                    style: TextStyle(color: successColor60, fontSize: 12))
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }
