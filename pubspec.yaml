@@ -27,8 +27,15 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^8.1.0
+  dio: ^4.0.4
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
+  fluttertoast: ^8.0.8
+  google_fonts: ^2.1.0
+  image_picker: ^0.8.4+3
+  intl: ^0.17.0
 
 
   # The following adds the Cupertino Icons font to your application.
